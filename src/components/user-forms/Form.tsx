@@ -1,7 +1,6 @@
 import { Component } from "react";
 import React from "react";
 import { IFieldProps } from "./Field";
-import { tsObjectKeyword } from "@babel/types";
 
 export const required = (values: IValues, fieldName: string): string =>
   values[fieldName] === undefined ||
@@ -67,7 +66,7 @@ export class Form extends Component<IFormProps, IFormState> {
     super(props);
 
     const errors: IErrors = {};
-    const formValues: IValues = {};
+    const formValues: IValues = { hobbies: new Map() };
 
     this.state = {
       errors,

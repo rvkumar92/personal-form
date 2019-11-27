@@ -21,6 +21,25 @@ export const UserForm: React.SFC = () => {
       label: "Password",
       type: "password",
       validation: { rule: required }
+    },
+    gender: {
+      id: "gender",
+      type: "radio",
+      inputType: "radio",
+      options: [
+        { label: "Male", value: "male" },
+        { label: "Female", value: "female" }
+      ]
+    },
+    hobbies: {
+      id: "hobbies",
+      type: "checkbox",
+      inputType: "checkbox",
+      options: [
+        { label: "Reading", value: "reading" },
+        { label: "Writing", value: "writing" },
+        { label: "Others", value: "others" }
+      ]
     }
   };
   return (
@@ -31,6 +50,8 @@ export const UserForm: React.SFC = () => {
           <Field {...fields.uname} />
           <Field {...fields.email} />
           <Field {...fields.password} />
+          <Field {...fields.gender} />
+          <Field {...fields.hobbies} />
         </React.Fragment>
       )}
     ></Form>
