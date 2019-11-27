@@ -1,38 +1,5 @@
 import * as React from "react";
 import { IErrors, IFormContext, FormContext, IValues } from "./Form";
-type InputType =
-  | "textbox"
-  | "multilinetextbox"
-  | "dropdown"
-  | "radio"
-  | "checkbox";
-
-export interface IValidation {
-  rule: (values: IValues, fieldName: string, args: any) => string;
-  args?: any;
-}
-
-export interface GenderOptions {
-  label: string;
-  value: string;
-  checked: boolean;
-}
-
-export interface HobbiesOption {
-  label: string;
-  value: string;
-  checked: string;
-}
-
-export interface IFieldProps {
-  id: string;
-  type?: string;
-  label?: string;
-  inputType?: InputType;
-  options?: string[] | object[];
-  value?: any;
-  validation?: IValidation;
-}
 
 export const Field: React.FunctionComponent<IFieldProps> = ({
   id,
@@ -111,7 +78,6 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                     }
                   />
                   {opt.label}
-                  {console.log("context", context)}
                   {opt.value.toLowerCase() === "others" &&
                     context!.formValues[id].get(opt.value) === true && (
                       <input

@@ -28,35 +28,7 @@ export const passwordLength = (values: IValues, fieldName: string): string =>
   values[fieldName] && values[fieldName].length > 8
     ? "Password should be of minimum length 8"
     : "";
-export interface IFields {
-  [key: string]: IFieldProps;
-}
 
-interface IFormProps {
-  fields: IFields;
-  render: () => React.ReactNode;
-}
-
-export interface IValues {
-  [key: string]: any;
-}
-
-export interface IErrors {
-  [key: string]: string;
-}
-
-export interface IFormState {
-  formValues: IValues;
-
-  errors: IErrors;
-
-  submitSuccess?: boolean;
-}
-
-export interface IFormContext extends IFormState {
-  setValues: (values: IValues) => void;
-  validate: (fieldName: string) => void;
-}
 export const FormContext = React.createContext<IFormContext | undefined>(
   undefined
 );
@@ -118,10 +90,10 @@ export class Form extends Component<IFormProps, IFormState> {
 
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(this.state.formValues);
 
     if (this.validateForm()) {
-      // const submitSuccess =
+      const { formValues } = this.state;
+      this.setState({ formSubmitted: !this.state.formSubmitted });
     }
   };
 

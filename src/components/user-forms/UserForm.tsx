@@ -1,5 +1,6 @@
 import "./UserForm.css";
-import { Form, IFields, required, isEmail } from "./Form";
+import { Form, required, isEmail } from "./Form";
+import { IFields } from "../../interfaces";
 import { Field } from "./Field";
 import React from "react";
 
