@@ -1,6 +1,13 @@
 import { Component } from "react";
 import React from "react";
-import { IFieldProps } from "./Field";
+import {
+  IValues,
+  IFormContext,
+  IFormProps,
+  IFormState,
+  IErrors
+} from "../../interfaces";
+import { DisplayFormDetails } from "./DisplayFormDetails";
 
 export const required = (values: IValues, fieldName: string): string =>
   values[fieldName] === undefined ||
@@ -105,18 +112,26 @@ export class Form extends Component<IFormProps, IFormState> {
       validate: this.validate
     };
 
+    const renderForm = (
+      <form
+        onSubmit={this.handleSubmit}
+        noValidate={true}
+        className="personal-form uk-form-stacked"
+      >
+        <div>
+          {this.props.render()}
+          <div>
+            <button type="submit" disabled={this.hasErrors(errors)}>
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    );
+
     return (
       <FormContext.Provider value={context}>
-        <form onSubmit={this.handleSubmit} noValidate={true}>
-          <div>
-            {this.props.render()}
-            <div>
-              <button type="submit" disabled={this.hasErrors(errors)}>
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
+        {this.state.formSubmitted ? <DisplayFormDetails /> : renderForm}
       </FormContext.Provider>
     );
   }

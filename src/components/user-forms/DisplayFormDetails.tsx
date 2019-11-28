@@ -1,14 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
+import { FormContext } from "./Form";
+import { IFormContext } from "../../interfaces";
 
-
-export interface IFieldProps {
-    id: string;
-    type?: string;
-    label?: string;
-    inputType?: InputType;
-    options?: string[] | object[];
-    value?: any;
-    validation?: IValidation;
-}
-
-export const DisplayFormDetails: React.SFC = () => ();
+export const DisplayFormDetails: React.SFC<{}> = () => (
+  <FormContext.Consumer>
+    {(context: IFormContext | undefined) => {
+      return <div>Hello</div>;
+    }}
+  </FormContext.Consumer>
+);

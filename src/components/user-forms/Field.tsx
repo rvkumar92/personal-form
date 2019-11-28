@@ -1,5 +1,12 @@
 import * as React from "react";
-import { IErrors, IFormContext, FormContext, IValues } from "./Form";
+import { FormContext } from "./Form";
+import {
+  IFieldProps,
+  IFormContext,
+  IErrors,
+  GenderOptions,
+  HobbiesOption
+} from "../../interfaces";
 
 export const Field: React.FunctionComponent<IFieldProps> = ({
   id,
@@ -32,6 +39,7 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
               type={type}
               value={value}
               style={getEditorStyle(context!.errors)}
+              className="uk-input uk-form-width-medium uk-form-controls"
               onChange={(event: React.FormEvent<HTMLInputElement>) =>
                 context!.setValues({ [id]: event.currentTarget.value })
               }
@@ -48,6 +56,7 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                   <input
                     id={id}
                     type="radio"
+                    className="uk-radio uk-form-width-medium uk-form-controls"
                     value={opt.value}
                     checked={context!.formValues[id] === opt.value}
                     onChange={(event: React.FormEvent<HTMLInputElement>) =>
@@ -67,6 +76,7 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                     id={id}
                     type="checkbox"
                     value={opt.value}
+                    className="uk-checkbox uk-form-width-medium uk-form-controls"
                     checked={context!.formValues[id].get(opt.value) || false}
                     onChange={(event: React.FormEvent<HTMLInputElement>) =>
                       context!.setValues({
@@ -83,6 +93,7 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                       <input
                         type="text"
                         id="others"
+                        className="uk-input uk-form-width-medium uk-form-controls"
                         onBlur={(event: React.FormEvent<HTMLInputElement>) => {
                           context!.validate(id);
                           context!.setValues({

@@ -47,13 +47,13 @@ export const UserForm: React.SFC = () => {
     <Form
       fields={fields}
       render={() => (
-        <React.Fragment>
+        <div className="uk-container uk-flex uk-flex-column uk-flex-between">
           <Field {...fields.uname} />
           <Field {...fields.email} />
           <Field {...fields.password} />
           <Field {...fields.gender} />
           <Field {...fields.hobbies} />
-        </React.Fragment>
+        </div>
       )}
     ></Form>
   );

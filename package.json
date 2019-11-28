@@ -10,8 +10,8 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "typescript": "3.7.2",
-    "uikit": "^3.2.3"
+    "symlink-dir": "^3.1.1",
+    "typescript": "3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,7 +35,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.2",
-    "@types/uikit": "^2.27.7"
+    "@testing-library/react": "^9.3.2"
   }
 }
