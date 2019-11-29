@@ -8,33 +8,7 @@ import {
   IErrors
 } from "../../interfaces";
 import { DisplayFormDetails } from "./DisplayFormDetails";
-
-export const required = (values: IValues, fieldName: string): string =>
-  values[fieldName] === undefined ||
-  values[fieldName] === null ||
-  values[fieldName] === ""
-    ? "This field must be populated"
-    : "";
-
-export const isEmail = (values: IValues, fieldName: string): string =>
-  values[fieldName] &&
-  values[fieldName].search(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-  )
-    ? "Email should be of valid format"
-    : "";
-
-export const usernameLength = (values: IValues, fieldName: string): string =>
-  values[fieldName] &&
-  values[fieldName].length > 8 &&
-  values[fieldName].length < 20
-    ? "Username should be of length 8 to 20"
-    : "";
-
-export const passwordLength = (values: IValues, fieldName: string): string =>
-  values[fieldName] && values[fieldName].length > 8
-    ? "Password should be of minimum length 8"
-    : "";
+import "./Form.css";
 
 export const FormContext = React.createContext<IFormContext | undefined>(
   undefined
@@ -105,7 +79,7 @@ export class Form extends Component<IFormProps, IFormState> {
   };
 
   public render() {
-    const { submitSuccess, errors } = this.state;
+    const { errors } = this.state;
     const context: IFormContext = {
       ...this.state,
       setValues: this.setValues,
@@ -116,12 +90,16 @@ export class Form extends Component<IFormProps, IFormState> {
       <form
         onSubmit={this.handleSubmit}
         noValidate={true}
-        className="personal-form uk-form-stacked"
+        className="personal-form uk-form-horizontal"
       >
-        <div>
+        <div className="uk-card uk-card-secondary uk-card-body uk-width-1-1@m card">
           {this.props.render()}
-          <div>
-            <button type="submit" disabled={this.hasErrors(errors)}>
+          <div className="uk-margin">
+            <button
+              type="submit"
+              disabled={this.hasErrors(errors)}
+              className="uk-button uk-button-secondary uk-button-small"
+            >
               Submit
             </button>
           </div>

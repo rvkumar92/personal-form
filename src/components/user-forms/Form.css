@@ -1,0 +1,23 @@
+.personal-form {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.card {
+  box-shadow: 0 0 5px 2px #000;
+}
+
+.personal-form label {
+  color: rgb(231, 216, 216);
+  font-size: calc(6px + 2vmin);
+  font-weight: bold;
+}
+
+.personal-form .radio-group,
+.checkbox-group {
+  text-align: left;
+}
+.personal-form .radio-group input,
+.checkbox-group input {
+  margin-right: 10px;
+}
